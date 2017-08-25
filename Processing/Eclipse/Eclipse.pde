@@ -5,17 +5,26 @@ CelestialObject sun;
 CelestialObject moon;
 
 void setup() {
-  size(500,500);
-  sun = new CelestialObject(3, -1, 50, green, 50, 190);
-  moon = new CelestialObject(2, -2, 46, white, 46, 210);
+  size(500, 500);
+  sun = new CelestialObject(3, -1, 50, green, 50, 230);
+  moon = new CelestialObject(3, -2, 46, white, 50, 290);
 }
 
+void setSkyColor( float percentCovered) {
 
+  float percentExposed = 1.0 - percentCovered;
+
+  float r = 135 * percentExposed;
+  float g = 206 * percentExposed;
+  float b = 250 * percentExposed;
+  background(r, g, b);
+}
 
 void draw() {
-  background(10,123,255);
+  setSkyColor(0);
   sun.draw();
   sun.move();
   moon.draw();
   moon.move();
 }
+
